@@ -22,8 +22,9 @@ License:        BSD
 # This library package is described in this very spec
 Requires:       %{libname} = %{version}
 BuildRequires:	glibc-static-devel libstdc++-static-devel
-# CVC3, by default, statically compiles with GMP library.  This should be changed to dynamic linkage, though there's no matching configure opiton that works for sure.
 BuildRequires:	libgmp-devel
+BuildRequires:  bison
+BuildRequires:  flex
 
 %description
 CVC3 is an automatic theorem prover for Satisfiability Modulo Theories (SMT)
