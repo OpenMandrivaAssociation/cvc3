@@ -36,6 +36,7 @@ arithmetic, arrays, tuples, records, inductive data types, bit vectors, and
 equality over uninterpreted function symbols.  CVC3 also supports quantifiers.
 
 %package -n %{libname}
+Summary:        Shared libraries for automatic SMT theorem proving
 Group:          Sciences/Computer science 
 License:        BSD
 
@@ -52,6 +53,7 @@ equality over uninterpreted function symbols.  CVC3 also supports quantifiers.
 This is a shared library with CVC3 for use in external applications.
 
 %package -n %{develname}
+Summary:        Library and includes to use automatic SMT theorem proving
 Group:          Sciences/Computer science 
 License:        BSD
 Requires:	%{libname} = %{version}
