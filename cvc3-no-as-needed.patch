@@ -1,0 +1,12 @@
+diff --git a/src/src/Makefile b/src/src/Makefile
+index 3aa7a5f..2791f11 100644
+--- a/src/src/Makefile
++++ b/src/src/Makefile
+@@ -207,6 +207,7 @@ ifneq ($(CYGWIN),)
+     -Wl,-soname,$(LIB_SHARED_MAJOR) -o \''$(LIB_SHARED)'\' `cat UNPACKED` $(LD_LIBS)
+ else
+ 	cat UNPACKED | xargs $(CXX) $(SHARED) $(CXXFLAGS) $(LDFLAGS) \
++    -Wl,--no-as-needed \
+     -Wl,-soname,$(LIB_SHARED_MAJOR) -o '$(LIB_SHARED)' `` $(LD_LIBS)
+ 	$(LDCONFIG) -nv $(LIB_DIR)
+ endif
