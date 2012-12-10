@@ -1,30 +1,26 @@
-%define name    cvc3
-%define version 2.4.1 
-
 %define lib_name_orig libcvc3
 %define major 5
 %define devprovname %mklibname %{name}
 # Note the underscore: name ends with a number, we don't want "libcvc35" here (approach taken from libdc1394 package)
-%define libname %mklibname %{name}_ %major
-%define develname %mklibname -d %{name}_ %major
+%define libname %mklibname %{name}_ %{major}
+%define develname %mklibname -d %{name}_ %{major}
 
-Name:           %{name} 
-Summary:        Automatic theorem prover for Satisfiability Modulo Theories
-Version:        %{version} 
-Release:        %mkrel 0
-Source0:        http://cs.nyu.edu/acsys/cvc3/releases/%{version}/cvc3-%{version}.tar.gz
-URL:            http://cs.nyu.edu/acsys/cvc3/index.html
+Name:		cvc3
+Summary:	Automatic theorem prover for Satisfiability Modulo Theories
+Version:	2.4.1 
+Release:	1
+Group:		Sciences/Computer science 
+License:	BSD
+URL:		http://cs.nyu.edu/acsys/cvc3/index.html
+Source0:	http://cs.nyu.edu/acsys/cvc3/releases/%{version}/cvc3-%{version}.tar.gz
 Patch0:		cvc3-no-as-needed.patch
-
-Group:          Sciences/Computer science 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot 
-License:        BSD
-# This library package is described in this very spec
-Requires:       %{libname} = %{version}
-BuildRequires:	glibc-static-devel libstdc++-static-devel
-BuildRequires:	libgmp-devel
+BuildRequires:	glibc-static-devel
+BuildRequires:	libstdc++-static-devel
+BuildRequires:	gmp-devel
 BuildRequires:  bison
 BuildRequires:  flex
+# This library package is described in this very spec
+Requires:       %{libname} = %{version}
 
 %description
 CVC3 is an automatic theorem prover for Satisfiability Modulo Theories (SMT)
@@ -37,9 +33,8 @@ arithmetic, arrays, tuples, records, inductive data types, bit vectors, and
 equality over uninterpreted function symbols.  CVC3 also supports quantifiers.
 
 %package -n %{libname}
-Summary:        Shared libraries for automatic SMT theorem proving
-Group:          Sciences/Computer science 
-License:        BSD
+Summary:	Shared libraries for automatic SMT theorem proving
+Group:		Sciences/Computer science 
 
 %description -n %{libname}
 CVC3 is an automatic theorem prover for Satisfiability Modulo Theories (SMT)
@@ -54,9 +49,8 @@ equality over uninterpreted function symbols.  CVC3 also supports quantifiers.
 This is a shared library with CVC3 for use in external applications.
 
 %package -n %{develname}
-Summary:        Library and includes to use automatic SMT theorem proving
-Group:          Sciences/Computer science 
-License:        BSD
+Summary:	Library and includes to use automatic SMT theorem proving
+Group:		Sciences/Computer science 
 Requires:	%{libname} = %{version}
 Provides:	%{devprovname}-devel = %{version}-%{release}
 
@@ -81,17 +75,11 @@ This is a development package for CVC3 shared library.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall
 rm -rf %{buildroot}%{_libdir}/pkgconfig
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean 
-rm -rf %{buildroot}
+# Fix unstripped-binary-or-object rpmlint error
+chmod 0755 %{buildroot}%{_libdir}/%{lib_name_orig}*.so.%{major}*
 
 %files -n %{libname}
 %{_libdir}/%{lib_name_orig}*.so.%{major}*
