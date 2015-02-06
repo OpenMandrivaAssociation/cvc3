@@ -8,7 +8,7 @@
 Name:		cvc3
 Summary:	Automatic theorem prover for Satisfiability Modulo Theories
 Version:	2.4.1 
-Release:	1
+Release:	2
 Group:		Sciences/Computer science 
 License:	BSD
 URL:		http://cs.nyu.edu/acsys/cvc3/index.html
