@@ -11,7 +11,7 @@ Version:	2.4.1
 Release:	2
 Group:		Sciences/Computer science 
 License:	BSD
-URL:		http://cs.nyu.edu/acsys/cvc3/index.html
+URL:		https://cs.nyu.edu/acsys/cvc3/index.html
 Source0:	http://cs.nyu.edu/acsys/cvc3/releases/%{version}/cvc3-%{version}.tar.gz
 Patch0:		cvc3-no-as-needed.patch
 BuildRequires:	glibc-static-devel
