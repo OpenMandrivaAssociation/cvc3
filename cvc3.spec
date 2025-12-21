@@ -14,6 +14,11 @@ License:	BSD
 URL:		https://cs.nyu.edu/acsys/cvc3/index.html
 Source0:	http://cs.nyu.edu/acsys/cvc3/releases/%{version}/cvc3-%{version}.tar.gz
 Patch0:		cvc3-no-as-needed.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	glibc-static-devel
 BuildRequires:	libstdc++-static-devel
 BuildRequires:	gmp-devel
